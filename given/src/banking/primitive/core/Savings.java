@@ -1,6 +1,23 @@
 package banking.primitive.core;
 
 public class Savings extends Account {
+	
+	/**
+	  Class: Savings
+	  
+	  Description: This Savings class is responsible for
+	  			   holding the savings account name and 
+	  			   also it does the functionality of deposits 
+	  			   made into the account, while also updating 
+	  			   the balance of the account. Also it does 
+	  			   the withdraw functionality, which also 
+	  			   checks for policies (withdraw limits) and 
+	  			   it applies a fee if the limit has been 
+	  			   reached or exceeded.
+	  			   
+	*/
+	
+	
 	private static final long serialVersionUID = 111L;
 	private int numWithdraws = 0;
 

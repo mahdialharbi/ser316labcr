@@ -2,6 +2,20 @@ package banking.primitive.core;
 
 public class Checking extends Account {
 
+	/**
+	  Class: Checking
+	  
+	  Description: This Checking class is responsible for
+	  			   holding the checking account name and 
+	  			   also it does the functionality of deposits 
+	  			   made into the account, while also updating 
+	  			   the balance of the account. Also it does 
+	  			   the withdraw functionality, which also 
+	  			   checks for policies (withdraw limits).
+	  			   
+	*/
+	
+	
 	private static final long serialVersionUID = 11L;
 	private int numWithdraws = 0;
 	
