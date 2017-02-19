@@ -15,18 +15,18 @@ public class AccountServerFactory {
 	  			   
 	*/
 
-	protected static AccountServerFactory singleton = null;
+	protected static AccountServerFactory SINGLETON = null;
 
 	protected AccountServerFactory() {
 
 	}
 
 	public static AccountServerFactory getMe() {
-		if (singleton == null) {
-			singleton = new AccountServerFactory();
+		if (SINGLETON == null) {
+			SINGLETON = new AccountServerFactory();
 		}
 
-		return singleton;
+		return SINGLETON;
 	}
 
 	public AccountServer lookup() {
