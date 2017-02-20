@@ -87,30 +87,9 @@ class ServerSolution implements AccountServer {
 		List<Account> result = new ArrayList<Account>();
 
 		for (Account acc : accountMap.values()) {
-			if (acc.getState() != State.CLOSED) {
+			if (acc._getState() != STATE.CLOSED) {
 				result.add(acc);
 			}
-
-	private boolean _newAccountFactory(String _type, String _name, float _balance)
-		throws IllegalArgumentException {
-		
-		if (accountMap.get(_name) != null) return false;
-		
-		Account acc;
-		if ("Checking".equals(_type)) {
-			acc = new Checking(_name, _balance);
-
-		} else if ("Savings".equals(_type)) {
-			acc = new Savings(_name, _balance);
-
-		} else {
-			throw new IllegalArgumentException("Bad account type:" + _type);
-		}
-		try {
-			accountMap.put(acc.getName(), acc);
-		} catch (Exception exc) {
-			return false;
-
 		}
 		return result;
 	}
@@ -159,46 +138,6 @@ class ServerSolution implements AccountServer {
 	}
 
 
-	/**
-	  Method: getAccount
-	  Inputs: String
-	  Returns: account
-
-	  Description: returns an account from the list by searching the input string as the 
-	  account name.
-	*/
-	public Account getAccount(String name) {
-		return accountMap.get(name);
-	}
-
-	/**
-	  Method: getAllAccounts
-	  Inputs: None
-	  Returns: List
-
-	  Description: Returns all the accounts in the current list
-	*/
-	public List<Account> getAllAccounts() {
-		return new ArrayList<Account>(accountMap.values());
-	}
-
-	/**
-	  Method: getActiveAccounts
-	  Inputs: None
-	  Returns: List
-
-	  Description: Returns all the active accounts in the current list
-	*/
-	public List<Account> getActiveAccounts() {
-		List<Account> result = new ArrayList<Account>();
-
-		for (Account acc : accountMap.values()) {
-			if (acc._getState() != STATE.CLOSED) {
-				result.add(acc);
-			}
-		}
-		return result;
-	}
 	
 	/**
 	  Method: saveAccounts
@@ -230,20 +169,20 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
-	private boolean newAccountFactory(String type, String name, float balance)
+	private boolean _newAccountFactory(String _type, String _name, float _balance)
 		throws IllegalArgumentException {
 		
-		if (accountMap.get(name) != null) return false;
+		if (accountMap.get(_name) != null) return false;
 		
 		Account acc;
-		if ("Checking".equals(type)) {
-			acc = new Checking(name, balance);
+		if ("Checking".equals(_type)) {
+			acc = new Checking(_name, _balance);
 
-		} else if ("Savings".equals(type)) {
-			acc = new Savings(name, balance);
+		} else if ("Savings".equals(_type)) {
+			acc = new Savings(_name, _balance);
 
 		} else {
-			throw new IllegalArgumentException("Bad account type:" + type);
+			throw new IllegalArgumentException("Bad account type:" + _type);
 		}
 		try {
 			accountMap.put(acc.getName(), acc);
