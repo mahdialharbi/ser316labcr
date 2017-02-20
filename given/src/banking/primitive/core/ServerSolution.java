@@ -14,11 +14,11 @@ import java.util.Map;
 import java.util.HashMap;
 import java.io.*;
 
-import banking.primitive.core.Account.State;
+import banking.primitive.core.Account.STATE;
 
 class ServerSolution implements AccountServer {
 
-	static String fileName = "accounts.ser";
+	static String FILENAME = "accounts.ser";
 
 	Map<String,Account> accountMap = null;
 
@@ -31,11 +31,11 @@ class ServerSolution implements AccountServer {
 	*/
 	public ServerSolution() {
 		accountMap = new HashMap<String,Account>();
-		File file = new File(fileName);
+		File file = new File(FILENAME);
 		ObjectInputStream in = null;
 		try {
 			if (file.exists()) {
-				System.out.println("Reading from file " + fileName + "...");
+				System.out.println("Reading from file " + FILENAME + "...");
 				in = new ObjectInputStream(new FileInputStream(file));
 
 				Integer sizeI = (Integer) in.readObject();
@@ -60,20 +60,20 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
-	private boolean newAccountFactory(String type, String name, float balance)
+	private boolean _newAccountFactory(String _type, String _name, float _balance)
 		throws IllegalArgumentException {
 		
-		if (accountMap.get(name) != null) return false;
+		if (accountMap.get(_name) != null) return false;
 		
 		Account acc;
-		if ("Checking".equals(type)) {
-			acc = new Checking(name, balance);
+		if ("Checking".equals(_type)) {
+			acc = new Checking(_name, _balance);
 
-		} else if ("Savings".equals(type)) {
-			acc = new Savings(name, balance);
+		} else if ("Savings".equals(_type)) {
+			acc = new Savings(_name, _balance);
 
 		} else {
-			throw new IllegalArgumentException("Bad account type:" + type);
+			throw new IllegalArgumentException("Bad account type:" + _type);
 		}
 		try {
 			accountMap.put(acc.getName(), acc);
@@ -96,7 +96,7 @@ class ServerSolution implements AccountServer {
 		
 		if (balance < 0.0f) throw new IllegalArgumentException("New account may not be started with a negative balance");
 		
-		return newAccountFactory(type, name, balance);
+		return _newAccountFactory(type, name, balance);
 	}
 	
 	/**
@@ -111,7 +111,7 @@ class ServerSolution implements AccountServer {
 		if (acc == null) {
 			return false;
 		}
-		acc.setState(State.CLOSED);
+		acc._setState(STATE.CLOSED);
 		return true;
 	}
 
@@ -149,7 +149,7 @@ class ServerSolution implements AccountServer {
 		List<Account> result = new ArrayList<Account>();
 
 		for (Account acc : accountMap.values()) {
-			if (acc.getState() != State.CLOSED) {
+			if (acc._getState() != STATE.CLOSED) {
 				result.add(acc);
 			}
 		}
@@ -166,7 +166,7 @@ class ServerSolution implements AccountServer {
 	public void saveAccounts() throws IOException {
 		ObjectOutputStream out = null; 
 		try {
-			out = new ObjectOutputStream(new FileOutputStream(fileName));
+			out = new ObjectOutputStream(new FileOutputStream(FILENAME));
 
 			out.writeObject(Integer.valueOf(accountMap.size()));
 			for (int i=0; i < accountMap.size(); i++) {
@@ -174,7 +174,7 @@ class ServerSolution implements AccountServer {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new IOException("Could not write file:" + fileName);
+			throw new IOException("Could not write file:" + FILENAME);
 		} finally {
 			if (out != null) {
 				try {

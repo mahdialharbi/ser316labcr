@@ -10,8 +10,20 @@ Description: Receives value inputs from ServerSolution
 
 
 public class AccountServerFactory {
+	
+	/**
+	  Class: AccountServerFactory
+	  
+	  Description: This AccountServerFactory will load information
+	  			   that is given from the ServerSolution class in the
+	  			   ServerSolution.java file. When the values and information
+	  			   is received it will properly set them so that it ensures
+	  			   that they have been updated correctly to where they are 
+	  			   supposed to go.
+	  			   
+	*/
 
-	protected static AccountServerFactory singleton = null;
+	protected static AccountServerFactory SINGLETON = null;
 
 	protected AccountServerFactory() {
 
@@ -26,11 +38,11 @@ public class AccountServerFactory {
 	*/
 	
 	public static AccountServerFactory getMe() {
-		if (singleton == null) {
-			singleton = new AccountServerFactory();
+		if (SINGLETON == null) {
+			SINGLETON = new AccountServerFactory();
 		}
 
-		return singleton;
+		return SINGLETON;
 	}
 
 	/**
