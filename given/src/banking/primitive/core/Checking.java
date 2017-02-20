@@ -31,6 +31,10 @@ public class Checking extends Account {
 		super(_name);
 	}
 
+
+    public static Checking _createChecking(String _name) {
+        return new Checking(_name);
+
 	/**
 	  Method: getType
 	  Inputs: None
@@ -48,9 +52,6 @@ public class Checking extends Account {
 	  Description: Creates a new Checking account object with 
 	  the name provided in the input string.
 	*/
-    public static Checking createChecking(String name) {
-        return new Checking(name);
-    }
 
     /**
 	  Method: Checking
