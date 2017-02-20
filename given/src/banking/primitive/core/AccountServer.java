@@ -52,4 +52,6 @@ public interface AccountServer {
 	 * @throws IOException if unable to save the state
 	 */
 	public void	saveAccounts() throws IOException;
+	
+	// nothing else here
 }

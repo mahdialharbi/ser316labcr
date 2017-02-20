@@ -108,7 +108,7 @@ class MainFrame extends JFrame {
 		JPanel panel4 = new JPanel();
 		panel4.add(balanceLabel);
 		panel4.add(balanceField);
-		
+		// jpanel5
 		JPanel panel5 = new JPanel();
 		panel5.add(newAccountButton);
 		panel5.add(depositButton);

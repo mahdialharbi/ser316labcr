@@ -23,7 +23,7 @@ public abstract class Account implements java.io.Serializable {
         name = n;
         state = State.OPEN;
     }
-
+// an account
     protected Account(String n, float b) {
         this(n); 
         balance = b;

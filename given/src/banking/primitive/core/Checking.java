@@ -97,4 +97,5 @@ public class Checking extends Account {
 	public String toString() {
 		return "Checking: " + getName() + ": " + getBalance();
 	}
+	
 }
