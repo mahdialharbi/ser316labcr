@@ -1,6 +1,20 @@
 package banking.primitive.core;
 
 public abstract class Account implements java.io.Serializable {
+	
+	/**
+	  Class: Account
+	  
+	  Description: The Account class is responsible for containing 
+	  			   all of the information that is needed for every 
+	  			   account. You will see that in this class that 
+	  			   it holds the name, balance, deposit, withdraw, 
+	  			   the type and the state of all of the accounts 
+	  			   that will exist individually.
+	  			   
+	*/
+	
+	
     private static final long serialVersionUID = 1L;
 
     protected enum State {

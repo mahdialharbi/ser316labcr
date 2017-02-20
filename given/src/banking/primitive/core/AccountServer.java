@@ -4,6 +4,16 @@ import java.io.IOException;
 import java.util.List;
 
 public interface AccountServer {
+	
+	/**
+	  Class: AccountServer
+	  
+	  Description: This AccountServer class is responsible for 
+	  			   storing all of the newly created accounts. 
+	  			   This class also checks and determines if 
+	  			   there are duplicate accounts when one is created.
+	  			   
+	*/
 
 	/** 
 	 *  Create a new account object in the server. if an account already exists with the given name

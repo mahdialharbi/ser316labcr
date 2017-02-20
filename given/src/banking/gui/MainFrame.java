@@ -13,6 +13,7 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 class MainFrame extends JFrame {
+	
 	AccountServer	myServer;
 	Properties		props;
 	JLabel			typeLabel;
