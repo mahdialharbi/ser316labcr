@@ -10,11 +10,25 @@ Description: Account of type Checking
 
 public class Checking extends Account {
 
-	private static final long serialVersionUID = 11L;
-	private int numWithdraws = 0;
+	/**
+	  Class: Checking
+	  
+	  Description: This Checking class is responsible for
+	  			   holding the checking account name and 
+	  			   also it does the functionality of deposits 
+	  			   made into the account, while also updating 
+	  			   the balance of the account. Also it does 
+	  			   the withdraw functionality, which also 
+	  			   checks for policies (withdraw limits).
+	  			   
+	*/
 	
-	private Checking(String name) {
-		super(name);
+	
+	private static final long _SERIALVERSIONUID = 11L;
+	private static int NUMWITHDRAWS = 0;
+	
+	private Checking(String _name) {
+		super(_name);
 	}
 
 	/**
@@ -55,10 +69,10 @@ public class Checking extends Account {
 	 * @param float is the deposit amount
 	 */
 	public boolean deposit(float amount) {
-		if (getState() != State.CLOSED && amount > 0.0f) {
-			balance = balance + amount;
-			if (balance >= 0.0f) {
-				setState(State.OPEN);
+		if (_getState() != STATE.CLOSED && amount > 0.0f) {
+			_balance = _balance + amount;
+			if (_balance >= 0.0f) {
+				_setState(STATE.OPEN);
 			}
 			return true;
 		}
@@ -72,13 +86,13 @@ public class Checking extends Account {
 	public boolean withdraw(float amount) {
 		if (amount > 0.0f) {		
 			// KG: incorrect, last balance check should be >=
-			if (getState() == State.OPEN || (getState() == State.OVERDRAWN && balance > -100.0f)) {
-				balance = balance - amount;
-				numWithdraws++;
-				if (numWithdraws > 10)
-					balance = balance - 2.0f;
-				if (balance < 0.0f) {
-					setState(State.OVERDRAWN);
+			if (_getState() == STATE.OPEN || (_getState() == STATE.OVERDRAWN && _balance > -100.0f)) {
+				_balance = _balance - amount;
+				NUMWITHDRAWS++;
+				if (NUMWITHDRAWS > 10)
+					_balance = _balance - 2.0f;
+				if (_balance < 0.0f) {
+					_setState(STATE.OVERDRAWN);
 				}
 				return true;
 			}
