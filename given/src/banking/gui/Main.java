@@ -15,6 +15,9 @@ import javax.swing.JFrame;
  * @author kevinagary
  *
  */
+
+
+// added the my.properties file
 final class Main {	
 	
 	/**
