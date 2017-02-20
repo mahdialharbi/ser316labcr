@@ -1,5 +1,13 @@
 package banking.gui;
 
+/*
+File:	Main.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Main method for running the program
+*/
+
 import javax.swing.JFrame;
 
 /**
