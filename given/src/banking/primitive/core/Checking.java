@@ -1,5 +1,13 @@
 package banking.primitive.core;
 
+/*
+File:	Checking.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Account of type Checking
+*/
+
 public class Checking extends Account {
 
 	/**
@@ -23,10 +31,36 @@ public class Checking extends Account {
 		super(_name);
 	}
 
+
     public static Checking _createChecking(String _name) {
         return new Checking(_name);
-    }
 
+	/**
+	  Method: getType
+	  Inputs: None
+	  Returns: String
+
+	  Description: Returns the type of account 
+	*/
+	public String getType() { return "Checking"; }
+	
+	/**
+	  Method: createChecking
+	  Inputs: String
+	  Returns: Checking account
+
+	  Description: Creates a new Checking account object with 
+	  the name provided in the input string.
+	*/
+
+    /**
+	  Method: Checking
+	  Inputs: String, float
+	  Returns: Checking account
+
+	  Description: Constructor for Checking Account that creates a Checking Account 
+	  object with the name provided in the input string, and the balance with the input float.
+	*/
 	public Checking(String name, float balance) {
 		super(name, balance);
 	}
@@ -53,6 +87,7 @@ public class Checking extends Account {
 	public boolean withdraw(float amount) {
 		if (amount > 0.0f) {		
 			// KG: incorrect, last balance check should be >=
+
 			if (_getState() == STATE.OPEN || (_getState() == STATE.OVERDRAWN && _balance > -100.0f)) {
 				_balance = _balance - amount;
 				NUMWITHDRAWS++;
@@ -67,9 +102,16 @@ public class Checking extends Account {
 		return false;
 	}
 
-	public String getType() { return "Checking"; }
-	
+	/**
+	  Method: toString
+	  Inputs: None
+	  Returns: String
+
+	  Description: Returns the type of account with the name
+	  of the account, and the balance of the account.
+	*/
 	public String toString() {
 		return "Checking: " + getName() + ": " + getBalance();
 	}
+	
 }

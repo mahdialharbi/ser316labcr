@@ -1,7 +1,16 @@
 package banking.primitive.core;
 
+/*
+File:	Savings.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Account of type Savings
+*/
+
 public class Savings extends Account {
 	
+
 	/**
 	  Class: Savings
 	  
@@ -21,18 +30,44 @@ public class Savings extends Account {
 	private static final long SERIALVERSIONUID = 111L;
 	private static int NUMWITHDRAWS = 0;
 
+
+	/**
+	  Method: Savings
+	  Inputs: String
+	  Returns: Savings account
+
+	  Description: Constructor for Savings account object sets input string as name
+	*/
 	public Savings(String name) {
 		super(name);
 	}
 
+	/**
+	  Method: Savings
+	  Inputs: String, float
+	  Returns: Savings account
+
+	  Description: Constructor for Savings account object sets input string
+	  as name, and input float as blance.
+	*/
 	public Savings(String name, float balance) throws IllegalArgumentException {
 		super(name, balance);
 	}
 
 	/**
+	  Method: getType
+	  Inputs: None
+	  Returns: String
+
+	  Description: Returns account type
+	*/
+	public String getType() { return "Checking"; }
+
+	/**
 	 * A deposit comes with a fee of 50 cents per deposit
 	 */
 	public boolean deposit(float amount) {
+    
 		if (_getState() != STATE.CLOSED && amount > 0.0f) {
 			_balance = _balance + amount - 0.50F;
 			if (_balance >= 0.0f) {
@@ -61,9 +96,16 @@ public class Savings extends Account {
 		return false;
 	}
 	
-	public String getType() { return "Checking"; }
+	/**
+	  Method: toString
+	  Inputs: None
+	  Returns: String
 
+	  Description: Returns a string with account type, account name, and account
+	  balance.
+	*/
 	public String toString() {
 		return "Savings: " + getName() + ": " + getBalance();
 	}
+	// save this
 }

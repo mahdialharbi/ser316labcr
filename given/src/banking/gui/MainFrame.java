@@ -1,5 +1,13 @@
 package banking.gui;
 
+/*
+File:	MainFrame.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Sets up GUI JFrame
+*/
+
 import banking.primitive.core.Account;
 import banking.primitive.core.AccountServer;
 import banking.primitive.core.AccountServerFactory;
@@ -28,6 +36,14 @@ class MainFrame extends JFrame {
 	JButton displayAccountsButton;
 	JButton displayODAccountsButton;
 
+	
+	/**
+	  Method: MainFrame
+	  Inputs: String
+	  Returns: MainFrame Object
+
+	  Description: Constructor for MainFrame Class
+	*/
 	public MainFrame(String propertyFile) throws IOException {
 
 		// ** initialize myServer
@@ -79,6 +95,9 @@ class MainFrame extends JFrame {
 		Container pane = getContentPane();
 		pane.setLayout(new FlowLayout());
 
+		
+
+
 		JPanel accTypePanel = new JPanel();
 		accTypePanel.add(typeLabel);
 		accTypePanel.add(typeOptions);
@@ -107,6 +126,7 @@ class MainFrame extends JFrame {
 		pane.add(balancePanel);
 		pane.add(accActionButtons);
 
+
 		setSize(400, 250);
 	}
 
@@ -132,6 +152,7 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for new account button
 	class NewAccountHandler implements ActionListener {
+		//action listener
 		public void actionPerformed(ActionEvent e) {
 			String type = typeOptions.getSelectedItem().toString();
 			String name = nameField.getText();
@@ -148,6 +169,7 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for new account button
 	class SaveAccountsHandler implements ActionListener {
+		//action listener
 		public void actionPerformed(ActionEvent e) {
 			try {
 				myServer.saveAccounts();
@@ -160,6 +182,7 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for deposit button
 	class DepositHandler implements ActionListener {
+		// action listener
 		public void actionPerformed(ActionEvent e) {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
@@ -175,6 +198,7 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for deposit button
 	class WithdrawHandler implements ActionListener {
+		//action listener
 		public void actionPerformed(ActionEvent e) {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
