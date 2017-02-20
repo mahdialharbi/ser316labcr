@@ -18,9 +18,12 @@ import banking.primitive.core.Account.STATE;
 
 class ServerSolution implements AccountServer {
 
+
+
 	static String FILENAME = "accounts.ser";
 
-	Map<String,Account> accountMap = null;
+
+	private Map<String,Account> accountMap = null;
 
 	/**
 	  Method: ServerSolution
