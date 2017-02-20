@@ -1,5 +1,13 @@
 package banking.gui;
 
+/*
+File:	MainFrame.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Sets up GUI JFrame
+*/
+
 import banking.primitive.core.Account;
 import banking.primitive.core.AccountServer;
 import banking.primitive.core.AccountServerFactory;

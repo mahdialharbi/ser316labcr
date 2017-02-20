@@ -1,5 +1,13 @@
 package banking.primitive.core;
 
+/*
+File:	Savings.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Account of type Savings
+*/
+
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
 	private int numWithdraws = 0;

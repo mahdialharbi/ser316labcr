@@ -1,5 +1,13 @@
 package banking.primitive.core;
 
+/*
+File:	ServerSolution.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Server that stores account information from file accounts.ser
+*/
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

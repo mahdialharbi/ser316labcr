@@ -1,5 +1,13 @@
 package banking.primitive.core;
 
+/*
+File:	AccountServer.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Allows Account to be created and stored if not in existence already
+*/
+
 import java.io.IOException;
 import java.util.List;
 

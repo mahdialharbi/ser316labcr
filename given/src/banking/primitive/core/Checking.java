@@ -1,5 +1,13 @@
 package banking.primitive.core;
 
+/*
+File:	Checking.java
+Author:	Kevin A Gary
+Date:   2/17/2017
+
+Description: Account of type Checking
+*/
+
 public class Checking extends Account {
 
 	private static final long serialVersionUID = 11L;
