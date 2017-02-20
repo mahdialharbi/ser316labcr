@@ -13,31 +13,31 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 class MainFrame extends JFrame {
-	
-	AccountServer	myServer;
-	Properties		props;
-	JLabel			typeLabel;
-	JLabel			nameLabel;
-	JLabel			balanceLabel;
-	JComboBox		typeOptions;
-	JTextField		nameField;
-	JTextField		balanceField;
-	JButton 		depositButton;
-	JButton 		withdrawButton;
-	JButton			newAccountButton;
-	JButton			displayAccountsButton;
-	JButton			displayODAccountsButton;
+
+	AccountServer myServer;
+	Properties props;
+	JLabel typeLabel;
+	JLabel nameLabel;
+	JLabel balanceLabel;
+	JComboBox typeOptions;
+	JTextField nameField;
+	JTextField balanceField;
+	JButton depositButton;
+	JButton withdrawButton;
+	JButton newAccountButton;
+	JButton displayAccountsButton;
+	JButton displayODAccountsButton;
 
 	public MainFrame(String propertyFile) throws IOException {
 
-		//** initialize myServer
+		// ** initialize myServer
 		myServer = AccountServerFactory.getMe().lookup();
 
 		props = new Properties();
 
-		FileInputStream fis = null; 
+		FileInputStream fis = null;
 		try {
-			fis =  new FileInputStream(propertyFile);
+			fis = new FileInputStream(propertyFile);
 			props.load(fis);
 			fis.close();
 		} catch (IOException ioe) {
@@ -47,14 +47,16 @@ class MainFrame extends JFrame {
 		_constructForm();
 	}
 
-	
 	private void _constructForm() {
-		//*** Make these read from properties
-		typeLabel		= new JLabel(props.getProperty("TypeLabel"));
-		nameLabel		= new JLabel(props.getProperty("NameLabel"));
-		balanceLabel	= new JLabel(props.getProperty("BalanceLabel"));
+		// *** Make these read from properties
+		typeLabel = new JLabel(props.getProperty("TypeLabel"));
+		nameLabel = new JLabel(props.getProperty("NameLabel"));
+		balanceLabel = new JLabel(props.getProperty("BalanceLabel"));
 
-		Object[] accountTypes = {"Savings", "Checking"};
+		Object[] accountTypes = { 
+				"Savings", "Checking" 
+				};
+		
 		typeOptions = new JComboBox(accountTypes);
 		nameField = new JTextField(20);
 		balanceField = new JTextField(20);
@@ -72,28 +74,28 @@ class MainFrame extends JFrame {
 		displayAllAccountsButton.addActionListener(new DisplayHandler());
 		depositButton.addActionListener(new DepositHandler());
 		withdrawButton.addActionListener(new WithdrawHandler());
-		saveButton.addActionListener(new SaveAccountsHandler());		
-		
+		saveButton.addActionListener(new SaveAccountsHandler());
+
 		Container pane = getContentPane();
 		pane.setLayout(new FlowLayout());
-		
+
 		JPanel panel1 = new JPanel();
 		panel1.add(typeLabel);
 		panel1.add(typeOptions);
-		
+
 		JPanel panel2 = new JPanel();
 		panel2.add(displayAccountsButton);
 		panel2.add(displayAllAccountsButton);
 		panel2.add(saveButton);
-		
+
 		JPanel panel3 = new JPanel();
 		panel3.add(nameLabel);
 		panel3.add(nameField);
-		
+
 		JPanel panel4 = new JPanel();
 		panel4.add(balanceLabel);
 		panel4.add(balanceField);
-		
+
 		JPanel panel5 = new JPanel();
 		panel5.add(newAccountButton);
 		panel5.add(depositButton);
@@ -104,7 +106,7 @@ class MainFrame extends JFrame {
 		pane.add(panel3);
 		pane.add(panel4);
 		pane.add(panel5);
-		
+
 		setSize(400, 250);
 	}
 
@@ -113,14 +115,15 @@ class MainFrame extends JFrame {
 			List<Account> accounts = null;
 			if (e.getSource() == displayAccountsButton) {
 				accounts = myServer.getActiveAccounts();
-			} else {
+			} 
+			else {
 				accounts = myServer.getAllAccounts();
 			}
 			StringBuffer sb = new StringBuffer();
 			Account thisAcct = null;
 			for (Iterator<Account> li = accounts.iterator(); li.hasNext();) {
-				thisAcct = (Account)li.next();
-				sb.append(thisAcct.toString()+"\n");
+				thisAcct = (Account) li.next();
+				sb.append(thisAcct.toString() + "\n");
 			}
 
 			JOptionPane.showMessageDialog(null, sb.toString());
@@ -136,12 +139,13 @@ class MainFrame extends JFrame {
 
 			if (myServer.newAccount(type, name, Float.parseFloat(balance))) {
 				JOptionPane.showMessageDialog(null, "Account created successfully");
-			} else {
+			} 
+			else {
 				JOptionPane.showMessageDialog(null, "Account not created!");
 			}
 		}
 	}
-	
+
 	// Complete a handler for new account button
 	class SaveAccountsHandler implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -162,11 +166,13 @@ class MainFrame extends JFrame {
 			Account acc = myServer.getAccount(name);
 			if (acc != null && acc.deposit(Float.parseFloat(balance))) {
 				JOptionPane.showMessageDialog(null, "Deposit successful");
-			} else {
+			} 
+			else {
 				JOptionPane.showMessageDialog(null, "Deposit unsuccessful");
-			}		
+			}
 		}
 	}
+
 	// Complete a handler for deposit button
 	class WithdrawHandler implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -175,18 +181,18 @@ class MainFrame extends JFrame {
 			Account acc = myServer.getAccount(name);
 			if (acc != null && acc.withdraw(Float.parseFloat(balance))) {
 				JOptionPane.showMessageDialog(null, "Withdrawal successful");
-			} else {
+			} 
+			else {
 				JOptionPane.showMessageDialog(null, "Withdrawal unsuccessful");
-			}		
+			}
 		}
 	}
-	
-	//** Complete a handler for the Frame that terminates 
-	//** (System.exit(1)) on windowClosing event
+
+	// ** Complete a handler for the Frame that terminates
+	// ** (System.exit(1)) on windowClosing event
 
 	static class FrameHandler extends WindowAdapter {
 		public void windowClosing(WindowEvent e) {
-
 			System.exit(0);
 		}
 	}
