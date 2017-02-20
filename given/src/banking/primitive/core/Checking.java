@@ -17,7 +17,7 @@ public class Checking extends Account {
 	
 	
 	private static final long _SERIALVERSIONUID = 11L;
-	private int _numWithdraws = 0;
+	private static int NUMWITHDRAWS = 0;
 	
 	private Checking(String _name) {
 		super(_name);
@@ -55,8 +55,8 @@ public class Checking extends Account {
 			// KG: incorrect, last balance check should be >=
 			if (_getState() == STATE.OPEN || (_getState() == STATE.OVERDRAWN && _balance > -100.0f)) {
 				_balance = _balance - amount;
-				_numWithdraws++;
-				if (_numWithdraws > 10)
+				NUMWITHDRAWS++;
+				if (NUMWITHDRAWS > 10)
 					_balance = _balance - 2.0f;
 				if (_balance < 0.0f) {
 					_setState(STATE.OVERDRAWN);

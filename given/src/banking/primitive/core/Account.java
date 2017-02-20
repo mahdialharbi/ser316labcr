@@ -25,14 +25,14 @@ public abstract class Account implements java.io.Serializable {
     protected String _name;
     private STATE _state;
 
-    protected Account(String _n) {
-        _name = _n;
+    protected Account(String _accountName) {
+        _name = _accountName;
         _state = STATE.OPEN;
     }
 
-    protected Account(String _n, float _b) {
-        this(_n); 
-        _balance = _b;
+    protected Account(String _accountName, float _accountBalance) {
+        this(_accountName); 
+        _balance = _accountBalance;
     }
 
     /**
@@ -79,8 +79,8 @@ public abstract class Account implements java.io.Serializable {
         return _state;
     }
 
-    protected final void _setState(STATE s) {
-        _state = s;
+    protected final void _setState(STATE _setAccState) {
+        _state = _setAccState;
     }
 
     public String toString() {

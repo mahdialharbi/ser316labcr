@@ -19,7 +19,7 @@ public class Savings extends Account {
 	
 	
 	private static final long SERIALVERSIONUID = 111L;
-	private int _numWithdraws = 0;
+	private static int NUMWITHDRAWS = 0;
 
 	public Savings(String name) {
 		super(name);
@@ -49,8 +49,8 @@ public class Savings extends Account {
 	public boolean withdraw(float amount) {
 		if (_getState() == STATE.OPEN && amount > 0.0f) {
 			_balance = _balance - amount;
-			_numWithdraws++;
-			if (_numWithdraws > 3)
+			NUMWITHDRAWS++;
+			if (NUMWITHDRAWS > 3)
 				_balance = _balance - 1.0f;
 			// KG BVA: should be < 0
 			if (_balance <= 0.0f) {
