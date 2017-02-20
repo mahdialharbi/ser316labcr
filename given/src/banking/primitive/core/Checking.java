@@ -34,7 +34,7 @@ public class Checking extends Account {
 
     public static Checking _createChecking(String _name) {
         return new Checking(_name);
-
+    }
 	/**
 	  Method: getType
 	  Inputs: None
@@ -42,7 +42,9 @@ public class Checking extends Account {
 
 	  Description: Returns the type of account 
 	*/
-	public String getType() { return "Checking"; }
+	public String getType() { 
+		return "Checking"; 
+	}
 	
 	/**
 	  Method: createChecking
