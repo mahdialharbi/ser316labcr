@@ -56,4 +56,5 @@ public class AccountServerFactory {
 	public AccountServer lookup() {
 		return new ServerSolution();
 	}
+	// factory
 }

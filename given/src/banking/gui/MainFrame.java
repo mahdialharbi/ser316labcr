@@ -95,6 +95,9 @@ class MainFrame extends JFrame {
 		Container pane = getContentPane();
 		pane.setLayout(new FlowLayout());
 
+		
+
+
 		JPanel accTypePanel = new JPanel();
 		accTypePanel.add(typeLabel);
 		accTypePanel.add(typeOptions);
@@ -122,6 +125,7 @@ class MainFrame extends JFrame {
 		pane.add(accLabelPanel);
 		pane.add(balancePanel);
 		pane.add(accActionButtons);
+
 
 		setSize(400, 250);
 	}
