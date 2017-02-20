@@ -18,6 +18,15 @@ public class Checking extends Account {
 	}
 
 	/**
+	  Method: getType
+	  Inputs: None
+	  Returns: String
+
+	  Description: Returns the type of account 
+	*/
+	public String getType() { return "Checking"; }
+	
+	/**
 	  Method: createChecking
 	  Inputs: String
 	  Returns: Checking account
@@ -77,15 +86,6 @@ public class Checking extends Account {
 		return false;
 	}
 
-	/**
-	  Method: getType
-	  Inputs: None
-	  Returns: String
-
-	  Description: Returns the type of account 
-	*/
-	public String getType() { return "Checking"; }
-	
 	/**
 	  Method: toString
 	  Inputs: None

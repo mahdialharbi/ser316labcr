@@ -60,29 +60,47 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
-	private boolean newAccountFactory(String type, String name, float balance)
-		throws IllegalArgumentException {
-		
-		if (accountMap.get(name) != null) return false;
-		
-		Account acc;
-		if ("Checking".equals(type)) {
-			acc = new Checking(name, balance);
+	/**
+	  Method: getAccount
+	  Inputs: String
+	  Returns: account
 
-		} else if ("Savings".equals(type)) {
-			acc = new Savings(name, balance);
-
-		} else {
-			throw new IllegalArgumentException("Bad account type:" + type);
-		}
-		try {
-			accountMap.put(acc.getName(), acc);
-		} catch (Exception exc) {
-			return false;
-		}
-		return true;
+	  Description: returns an account from the list by searching the input string as the 
+	  account name.
+	*/
+	public Account getAccount(String name) {
+		return accountMap.get(name);
 	}
 
+	/**
+	  Method: getActiveAccounts
+	  Inputs: None
+	  Returns: List
+
+	  Description: Returns all the active accounts in the current list
+	*/
+	public List<Account> getActiveAccounts() {
+		List<Account> result = new ArrayList<Account>();
+
+		for (Account acc : accountMap.values()) {
+			if (acc.getState() != State.CLOSED) {
+				result.add(acc);
+			}
+		}
+		return result;
+	}
+	
+	/**
+	  Method: getAllAccounts
+	  Inputs: None
+	  Returns: List
+
+	  Description: Returns all the accounts in the current list
+	*/
+	public List<Account> getAllAccounts() {
+		return new ArrayList<Account>(accountMap.values());
+	}
+	
 	/**
 	  Method: newAccount
 	  Inputs: String, String, float
@@ -115,46 +133,7 @@ class ServerSolution implements AccountServer {
 		return true;
 	}
 
-	/**
-	  Method: getAccount
-	  Inputs: String
-	  Returns: account
-
-	  Description: returns an account from the list by searching the input string as the 
-	  account name.
-	*/
-	public Account getAccount(String name) {
-		return accountMap.get(name);
-	}
-
-	/**
-	  Method: getAllAccounts
-	  Inputs: None
-	  Returns: List
-
-	  Description: Returns all the accounts in the current list
-	*/
-	public List<Account> getAllAccounts() {
-		return new ArrayList<Account>(accountMap.values());
-	}
-
-	/**
-	  Method: getActiveAccounts
-	  Inputs: None
-	  Returns: List
-
-	  Description: Returns all the active accounts in the current list
-	*/
-	public List<Account> getActiveAccounts() {
-		List<Account> result = new ArrayList<Account>();
-
-		for (Account acc : accountMap.values()) {
-			if (acc.getState() != State.CLOSED) {
-				result.add(acc);
-			}
-		}
-		return result;
-	}
+	
 	
 	/**
 	  Method: saveAccounts
@@ -185,5 +164,29 @@ class ServerSolution implements AccountServer {
 			}
 		}
 	}
+	
+	private boolean newAccountFactory(String type, String name, float balance)
+		throws IllegalArgumentException {
+		
+		if (accountMap.get(name) != null) return false;
+		
+		Account acc;
+		if ("Checking".equals(type)) {
+			acc = new Checking(name, balance);
+
+		} else if ("Savings".equals(type)) {
+			acc = new Savings(name, balance);
+
+		} else {
+			throw new IllegalArgumentException("Bad account type:" + type);
+		}
+		try {
+			accountMap.put(acc.getName(), acc);
+		} catch (Exception exc) {
+			return false;
+		}
+		return true;
+	}
+
 	// solution
 }
