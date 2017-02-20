@@ -10,6 +10,7 @@ Description: Account of type Savings
 
 public class Savings extends Account {
 	
+
 	/**
 	  Class: Savings
 	  
@@ -28,6 +29,7 @@ public class Savings extends Account {
 	
 	private static final long SERIALVERSIONUID = 111L;
 	private static int NUMWITHDRAWS = 0;
+
 
 	/**
 	  Method: Savings
@@ -51,6 +53,15 @@ public class Savings extends Account {
 	public Savings(String name, float balance) throws IllegalArgumentException {
 		super(name, balance);
 	}
+
+	/**
+	  Method: getType
+	  Inputs: None
+	  Returns: String
+
+	  Description: Returns account type
+	*/
+	public String getType() { return "Checking"; }
 
 	/**
 	 * A deposit comes with a fee of 50 cents per deposit
@@ -84,15 +95,6 @@ public class Savings extends Account {
 		return false;
 	}
 	
-	/**
-	  Method: getType
-	  Inputs: None
-	  Returns: String
-
-	  Description: Returns account type
-	*/
-	public String getType() { return "Checking"; }
-
 	/**
 	  Method: toString
 	  Inputs: None

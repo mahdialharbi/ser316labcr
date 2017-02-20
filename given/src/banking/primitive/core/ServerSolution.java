@@ -63,6 +63,34 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
+
+	/**
+	  Method: getAccount
+	  Inputs: String
+	  Returns: account
+
+	  Description: returns an account from the list by searching the input string as the 
+	  account name.
+	*/
+	public Account getAccount(String name) {
+		return accountMap.get(name);
+	}
+
+	/**
+	  Method: getActiveAccounts
+	  Inputs: None
+	  Returns: List
+
+	  Description: Returns all the active accounts in the current list
+	*/
+	public List<Account> getActiveAccounts() {
+		List<Account> result = new ArrayList<Account>();
+
+		for (Account acc : accountMap.values()) {
+			if (acc.getState() != State.CLOSED) {
+				result.add(acc);
+			}
+
 	private boolean _newAccountFactory(String _type, String _name, float _balance)
 		throws IllegalArgumentException {
 		
@@ -82,10 +110,22 @@ class ServerSolution implements AccountServer {
 			accountMap.put(acc.getName(), acc);
 		} catch (Exception exc) {
 			return false;
-		}
-		return true;
-	}
 
+		}
+		return result;
+	}
+	
+	/**
+	  Method: getAllAccounts
+	  Inputs: None
+	  Returns: List
+
+	  Description: Returns all the accounts in the current list
+	*/
+	public List<Account> getAllAccounts() {
+		return new ArrayList<Account>(accountMap.values());
+	}
+	
 	/**
 	  Method: newAccount
 	  Inputs: String, String, float
@@ -117,6 +157,7 @@ class ServerSolution implements AccountServer {
 		acc._setState(STATE.CLOSED);
 		return true;
 	}
+
 
 	/**
 	  Method: getAccount
@@ -188,5 +229,29 @@ class ServerSolution implements AccountServer {
 			}
 		}
 	}
+	
+	private boolean newAccountFactory(String type, String name, float balance)
+		throws IllegalArgumentException {
+		
+		if (accountMap.get(name) != null) return false;
+		
+		Account acc;
+		if ("Checking".equals(type)) {
+			acc = new Checking(name, balance);
+
+		} else if ("Savings".equals(type)) {
+			acc = new Savings(name, balance);
+
+		} else {
+			throw new IllegalArgumentException("Bad account type:" + type);
+		}
+		try {
+			accountMap.put(acc.getName(), acc);
+		} catch (Exception exc) {
+			return false;
+		}
+		return true;
+	}
+
 	// solution
 }

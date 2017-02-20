@@ -9,6 +9,9 @@ Description: Abstract class for types of accounts
 */
 
 public abstract class Account implements java.io.Serializable {
+
+    
+
 	
 	/**
 	  Class: Account
@@ -25,9 +28,12 @@ public abstract class Account implements java.io.Serializable {
 	
     private static final long serialVersionUID = 1L;
 
+
     protected enum STATE {
         OPEN, CLOSED, OVERDRAWN
     };
+
+
 
     protected float _balance = 0.0F;
     protected String _name;
@@ -36,6 +42,7 @@ public abstract class Account implements java.io.Serializable {
     protected Account(String _accountName) {
         _name = _accountName;
         _state = STATE.OPEN;
+
     }
 
 
@@ -45,19 +52,44 @@ public abstract class Account implements java.io.Serializable {
     }
 
     /**
+     * @return balance in the Account
+     */
+    public final float getBalance() {
+        return balance;
+    }
+    
+    /**
      * @return name of the Account
      */
     public final String getName() {
         return _name;
     }
 
+    protected final State getState() {
+        return state;
+    }
+
+    protected final void setState(State s) {
+        state = s;
+    }
+
     /**
-     * @return balance in the Account
+     * @return either "Checking" or "Savings"
      */
+
+    public abstract String getType();
+      
     public final float getBalance() {
         return _balance;
     }
 
+
+   
+    public String toString() {
+        return "Account " + name + " has $" + balance + "and is " + getState()
+                + "\n";
+    }
+    
     /**
      * Adds money to an account. May not be done if the account is CLOSED
      * 
@@ -78,6 +110,7 @@ public abstract class Account implements java.io.Serializable {
      *         invalid state
      */
     public abstract boolean withdraw(float amount);
+
 
     /**
      * @return either "Checking" or "Savings"
