@@ -79,33 +79,33 @@ class MainFrame extends JFrame {
 		Container pane = getContentPane();
 		pane.setLayout(new FlowLayout());
 
-		JPanel panel1 = new JPanel();
-		panel1.add(typeLabel);
-		panel1.add(typeOptions);
+		JPanel accTypePanel = new JPanel();
+		accTypePanel.add(typeLabel);
+		accTypePanel.add(typeOptions);
 
-		JPanel panel2 = new JPanel();
-		panel2.add(displayAccountsButton);
-		panel2.add(displayAllAccountsButton);
-		panel2.add(saveButton);
+		JPanel displayOptions = new JPanel();
+		displayOptions.add(displayAccountsButton);
+		displayOptions.add(displayAllAccountsButton);
+		displayOptions.add(saveButton);
 
-		JPanel panel3 = new JPanel();
-		panel3.add(nameLabel);
-		panel3.add(nameField);
+		JPanel accLabelPanel = new JPanel();
+		accLabelPanel.add(nameLabel);
+		accLabelPanel.add(nameField);
 
-		JPanel panel4 = new JPanel();
-		panel4.add(balanceLabel);
-		panel4.add(balanceField);
+		JPanel balancePanel = new JPanel();
+		balancePanel.add(balanceLabel);
+		balancePanel.add(balanceField);
 
-		JPanel panel5 = new JPanel();
-		panel5.add(newAccountButton);
-		panel5.add(depositButton);
-		panel5.add(withdrawButton);
+		JPanel accActionButtons = new JPanel();
+		accActionButtons.add(newAccountButton);
+		accActionButtons.add(depositButton);
+		accActionButtons.add(withdrawButton);
 
-		pane.add(panel1);
-		pane.add(panel2);
-		pane.add(panel3);
-		pane.add(panel4);
-		pane.add(panel5);
+		pane.add(accTypePanel);
+		pane.add(displayOptions);
+		pane.add(accLabelPanel);
+		pane.add(balancePanel);
+		pane.add(accActionButtons);
 
 		setSize(400, 250);
 	}
