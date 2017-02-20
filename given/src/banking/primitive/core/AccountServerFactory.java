@@ -17,6 +17,14 @@ public class AccountServerFactory {
 
 	}
 
+	/**
+	  Method: getMe
+	  Inputs: None
+	  Returns: AccountServerFactory object
+
+	  Description: returns an AccountServerFactory Object
+	*/
+	
 	public static AccountServerFactory getMe() {
 		if (singleton == null) {
 			singleton = new AccountServerFactory();
@@ -25,6 +33,14 @@ public class AccountServerFactory {
 		return singleton;
 	}
 
+	/**
+	  Method: lookup
+	  Inputs: None
+	  Returns: ServerSolution
+
+	  Description: Returns a new ServerSolution Object
+	*/
+	
 	public AccountServer lookup() {
 		return new ServerSolution();
 	}

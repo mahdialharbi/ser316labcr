@@ -35,6 +35,14 @@ class MainFrame extends JFrame {
 	JButton			displayAccountsButton;
 	JButton			displayODAccountsButton;
 
+	
+	/**
+	  Method: MainFrame
+	  Inputs: String
+	  Returns: MainFrame Object
+
+	  Description: Constructor for MainFrame Class
+	*/
 	public MainFrame(String propertyFile) throws IOException {
 
 		//** initialize myServer
@@ -136,6 +144,7 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for new account button
 	class NewAccountHandler implements ActionListener {
+		//action listener
 		public void actionPerformed(ActionEvent e) {
 			String type = typeOptions.getSelectedItem().toString();
 			String name = nameField.getText();
@@ -151,6 +160,7 @@ class MainFrame extends JFrame {
 	
 	// Complete a handler for new account button
 	class SaveAccountsHandler implements ActionListener {
+		//action listener
 		public void actionPerformed(ActionEvent e) {
 			try {
 				myServer.saveAccounts();
@@ -163,6 +173,7 @@ class MainFrame extends JFrame {
 
 	// Complete a handler for deposit button
 	class DepositHandler implements ActionListener {
+		// action listener
 		public void actionPerformed(ActionEvent e) {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
@@ -176,6 +187,7 @@ class MainFrame extends JFrame {
 	}
 	// Complete a handler for deposit button
 	class WithdrawHandler implements ActionListener {
+		//action listener
 		public void actionPerformed(ActionEvent e) {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
