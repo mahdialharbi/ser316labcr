@@ -23,8 +23,8 @@ public class Checking extends Account {
 		super(_name);
 	}
 
-    public static Checking createChecking(String name) {
-        return new Checking(name);
+    public static Checking _createChecking(String _name) {
+        return new Checking(_name);
     }
 
 	public Checking(String name, float balance) {
