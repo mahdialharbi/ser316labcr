@@ -55,7 +55,7 @@ public abstract class Account implements java.io.Serializable {
      * @return balance in the Account
      */
     public final float getBalance() {
-        return balance;
+        return _balance;
     }
     
     /**
@@ -66,11 +66,11 @@ public abstract class Account implements java.io.Serializable {
     }
 
     protected final State getState() {
-        return state;
+        return _state;
     }
 
-    protected final void setState(State s) {
-        state = s;
+    protected final void setState(STATE s) {
+        _state = s;
     }
 
     /**
@@ -78,15 +78,9 @@ public abstract class Account implements java.io.Serializable {
      */
 
     public abstract String getType();
-      
-    public final float getBalance() {
-        return _balance;
-    }
-
-
    
     public String toString() {
-        return "Account " + name + " has $" + balance + "and is " + getState()
+        return "Account " + _name + " has $" + _balance + "and is " + getState()
                 + "\n";
     }
     
@@ -111,22 +105,4 @@ public abstract class Account implements java.io.Serializable {
      */
     public abstract boolean withdraw(float amount);
 
-
-    /**
-     * @return either "Checking" or "Savings"
-     */
-    public abstract String getType();
-
-    protected final STATE _getState() {
-        return _state;
-    }
-
-    protected final void _setState(STATE _setAccState) {
-        _state = _setAccState;
-    }
-
-    public String toString() {
-        return "Account " + _name + " has $" + _balance + "and is " + _getState()
-                + "\n";
-    }
 }
